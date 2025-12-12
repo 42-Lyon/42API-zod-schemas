@@ -16,25 +16,22 @@ const RATE = Number(process.env.INTRA_CLIENT_REQ_PER_SEC) || 2;
 interface ResourceConfig {
 	name: string;
 	endpoint: string;
-	filename: string;
+	maxPage?: number;
 }
 
 const RESOURCES: ResourceConfig[] = [
 	{
 		name: "achievements",
 		endpoint: "/v2/achievements",
-		filename: "achievements.json",
 	},
-	// Add more resources here later:
-	// {
-	// 	name: "users",
-	// 	endpoint: "/v2/users",
-	// 	filename: "users.json",
-	// },
+	{
+		name: "achievements_users",
+		endpoint: "/v2/achievements_users",
+		maxPage: 10
+	},
 	{
 		name: "campuses",
 		endpoint: "/v2/campus",
-		filename: "campuses.json",
 	},
 ];
 
@@ -54,11 +51,11 @@ async function fetchAllFixtures() {
 	for (const resource of RESOURCES) {
 		try {
 			console.log(`Fetching ${resource.name}...`);
-			const data = await ic.getAll(resource.endpoint);
-			
-			const outputPath = join(fixturesDir, resource.filename);
+			const data = await ic.getAll(resource.endpoint, resource.maxPage ? { maxPages: resource.maxPage } : {});
+
+			const outputPath = join(fixturesDir, `${resource.name}.json`);
 			writeFileSync(outputPath, JSON.stringify(data, null, 2));
-			
+
 			const count = Array.isArray(data) ? data.length : 1;
 			console.log(`✓ Successfully fetched ${count} ${resource.name}`);
 			console.log(`  Saved to: ${outputPath}\n`);

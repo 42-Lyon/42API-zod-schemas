@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { achievementSchema } from "../../src/resources/achievement.js";
+import { achievementSchema } from "../../src/resources/achievements/achievements";
 import { readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -23,10 +23,8 @@ describe("achievementSchema", () => {
 		test("should have loaded achievements from fixtures", () => {
 			expect(validAchievements.length).toBeGreaterThan(0);
 		});
-	});
 
-	// Dynamically generate one test per achievement
-	if (validAchievements.length > 0) {
+		// Dynamically generate one test per achievement
 		validAchievements.forEach((achievement, index) => {
 			test(`should validate achievement: "${achievement.name}" (id: ${achievement.id})`, () => {
 				const result = achievementSchema.safeParse(achievement);
@@ -37,5 +35,5 @@ describe("achievementSchema", () => {
 				expect(result.success).toBe(true);
 			});
 		});
-	}
+	});
 });

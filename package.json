@@ -22,17 +22,17 @@
     "fetch-fixtures": "node --loader ts-node/esm scripts/fetch-fixtures.ts"
   },
   "dependencies": {
-    "typescript": "^5.9.3",
     "zod": "^4.1.12"
   },
   "devDependencies": {
     "@ibertran/fortytwo-intra-client": "^3.1.4",
     "@jest/globals": "^30.2.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.3",
     "dotenv": "^17.2.3",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.6",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
