@@ -30,6 +30,11 @@ const RESOURCES: ResourceConfig[] = [
 		maxPage: 10
 	},
 	{
+		name: "transactions",
+		endpoint: "/v2/transactions",
+		maxPage: 50
+	},
+	{
 		name: "campuses",
 		endpoint: "/v2/campus",
 	},
