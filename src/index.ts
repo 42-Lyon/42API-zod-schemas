@@ -1,4 +1,5 @@
-export * from './resources/achievement.js';
+export * from './resources/achievements/achievements.js';
+export * from './resources/achievements/achievements_users.js';
 export * from './resources/bloc.js';
 export * from './resources/campus.js';
 export * from './resources/close.js';
@@ -8,4 +9,4 @@ export * from './resources/pool.js';
 export * from './resources/project.js';
 export * from './resources/quest.js';
 export * from './resources/team.js';
-export * from './resources/user.js';
+export * from './resources/users/users.js';
