@@ -15,7 +15,7 @@ export const intraAchievementSchema = z.object({
 	users_url: z.url(),
 	campus: z.array(z.string()),
 	achievements: z.array(z.string()),
-	parent: z.object({
+	parent: z.strictObject({
 		id: z.number(),
 		name: z.string(),
 		description: z.string(),
@@ -25,11 +25,11 @@ export const intraAchievementSchema = z.object({
 		image: z.string().nullable(),
 		nbr_of_success: z.number().nullable(),
 		users_url: z.url()
-	}).strict().nullable(),
-	title: z.object({
+	}).nullable(),
+	title: z.strictObject({
 		id: z.number(),
 		name: z.string()
-	}).strict().nullable(),
-}).strict();
+	}).nullable(),
+});
 
 export type IntraAchievement = z.infer<typeof intraAchievementSchema>;
