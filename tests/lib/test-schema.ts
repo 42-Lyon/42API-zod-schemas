@@ -45,8 +45,8 @@ export function testSchemaWithFixtures<T>({
 
 		// Dynamically generate one test per item
 		if (validItems.length > 0) {
-			validItems.forEach((item, index) => {
-				test(`should validate ${resourceName}: ${getItemLabel(item)}`, () => {
+			test(`should validate all ${resourceName}`, () => {
+				validItems.forEach((item, index) => {
 					const result = schema.safeParse(item);
 					if (!result.success) {
 						console.error(`\nFailed: ${resourceName} (${getItemLabel(item)}, index ${index}):`, item);
